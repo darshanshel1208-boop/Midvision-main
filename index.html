@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEARNIQ — Intelligent pathways to Growth & Mastery</title>
+<style>
+  :root{
+    --bg: #fbf9fa;
+    --card: #ffffff;
+    --card-border: #e6e6e6;
+    --ink: #111111;
+    --sub: #666666;
+    --line: #e2e2e2;
+    --accent: #2a2a2a;
+    --gold: #d4af37;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    overflow-x:hidden;
+    width:100%;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page{
+    max-width:1440px;
+    margin:0 auto;
+    padding:0 48px;
+    position:relative;
+  }
+
+  /* HEADER */
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:36px 0 10px 0;
+  }
+  .logo-group{
+    display:flex;
+    align-items:center;
+    gap:32px;
+  }
+  .logo{
+    font-weight:800;
+    font-size:16px;
+    letter-spacing:2.5px;
+  }
+  .menu{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    letter-spacing:0.8px;
+    font-weight:500;
+    color:var(--ink);
+    cursor:pointer;
+    padding:6px 12px;
+    border-radius:20px;
+    transition:background 0.2s ease;
+  }
+  .menu:hover{
+    background:rgba(0,0,0,0.04);
+  }
+  .menu svg{width:16px;height:16px;}
+  .icons{
+    display:flex;
+    gap:24px;
+    align-items:center;
+  }
+  .icons svg{
+    width:20px;
+    height:20px;
+    cursor:pointer;
+    transition:transform 0.2s ease;
+  }
+  .icons svg:hover{
+    transform:scale(1.1);
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:720px;
+    padding-top:16px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    min-height:680px;
+    position:relative;
+  }
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:3px;
+    color:var(--sub);
+    margin-bottom:20px;
+    font-weight:700;
+    text-transform:uppercase;
+  }
+  h1{
+    font-size:64px;
+    line-height:1.06;
+    font-weight:500;
+    letter-spacing:-2px;
+    max-width:520px;
+    margin-bottom:44px;
+    color:#0c0c0c;
+  }
+  .btn-outline{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    border:1px solid #b0b0b0;
+    background:transparent;
+    color:var(--ink);
+    padding:18px 34px;
+    border-radius:40px;
+    font-size:12px;
+    letter-spacing:2.2px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+  }
+  .btn-outline:hover{
+    background:var(--ink);
+    color:#fff;
+    border-color:var(--ink);
+    transform:translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+
+  .helix-stage{
+    position:relative;
+    height:780px;
+    width:100%;
+    grid-column:1/3;
+    grid-row:1/2;
+    pointer-events:auto;
+    cursor:grab;
+  }
+  .helix-stage:active{
+    cursor:grabbing;
+  }
+  #helix-canvas{
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%, -50%);
+    width:960px;
+    height:780px;
+  }
+
+  .hero-copy-right{
+    grid-column:2/3;
+    justify-self:end;
+    max-width:280px;
+    text-align:left;
+    z-index:2;
+    margin-top:70px;
+    pointer-events:auto;
+  }
+  .hero-copy-right p{
+    font-size:15px;
+    line-height:1.75;
+    color:#3a3a3a;
+    margin-bottom:32px;
+    font-weight:400;
+  }
+  .btn-dark{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    background:var(--ink);
+    color:#fff;
+    border:none;
+    padding:18px 30px;
+    border-radius:40px;
+    font-size:12px;
+    letter-spacing:1.8px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+  .btn-dark:hover{ 
+    transform:translateY(-3px); 
+    background:#000; 
+    box-shadow: 0 10px 28px rgba(0,0,0,0.25);
+  }
+  .btn-dark svg{width:14px;height:14px;}
+
+  .hero-left{
+    grid-column:1/2;
+    grid-row:1/2;
+    z-index:2;
+    pointer-events:auto;
+  }
+
+  /* INFO CARD */
+  .info-card{
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:12px;
+    display:grid;
+    grid-template-columns:130px 1.1fr 1.4fr;
+    gap:36px;
+    align-items:center;
+    padding:44px 52px;
+    margin-top:20px;
+    margin-bottom:90px;
+    box-shadow:0 12px 36px rgba(0,0,0,0.03);
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .info-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 48px rgba(0,0,0,0.06);
+  }
+  .info-num{
+    font-size:58px;
+    font-weight:800;
+    letter-spacing:-2px;
+    color:#1a1a1a;
+  }
+  .info-mid .date{
+    font-size:11px;
+    color:var(--sub);
+    letter-spacing:1.5px;
+    margin-bottom:12px;
+    display:block;
+    font-weight:600;
+  }
+  .info-mid h3{
+    font-size:21px;
+    font-weight:600;
+    line-height:1.35;
+    letter-spacing:-0.4px;
+  }
+  .info-text p{
+    font-size:14px;
+    line-height:1.8;
+    color:#4a4a4a;
+  }
+
+  @media (max-width:1080px){
+    h1{font-size:46px;}
+    .hero-grid{grid-template-columns:1fr;}
+    .helix-stage{grid-column:1/2; height:500px;}
+    #helix-canvas{width:480px; height:500px;}
+    .hero-copy-right{grid-column:1/2; justify-self:start; margin-top:500px; max-width:100%;}
+    .hero-left{grid-row:1/2;}
+    .info-card{grid-template-columns:1fr; text-align:left; padding:32px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="logo-group">
+      <div class="logo">LEARNIQ</div>
+      <div class="menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        Menu
+      </div>
+    </div>
+    <div class="icons">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-grid">
+
+      <div class="hero-left">
+        <div class="eyebrow">VISION OF LEARNIQ</div>
+        <h1>Intelligent pathways to Growth &amp; Mastery</h1>
+        <button class="btn-outline">START YOUR JOURNEY</button>
+      </div>
+
+      <div class="helix-stage" id="helix-stage">
+        <canvas id="helix-canvas"></canvas>
+      </div>
+
+      <div class="hero-copy-right">
+        <p>Realize your strengths. Understand your unique style, and receive tailored guidance to help you learn, adapt, and excel faster.</p>
+        <button class="btn-dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          Dive in deeper
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="info-card">
+    <div class="info-num">01</div>
+    <div class="info-mid">
+      <span class="date">2024-08-30</span>
+      <h3>Reshaping Learning With Adaptive Science</h3>
+    </div>
+    <div class="info-text">
+      <p>LEARNIQ is a worldwide EdTech platform committed to transforming education through adaptive, science-backed methods. Working alongside top researchers and learning experts, LEARNIQ delivers meaningful insights that enable students at every level to unlock peak performance. Available internationally since May 2024.</p>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const canvas = document.getElementById('helix-canvas');
+  const stage = document.getElementById('helix-stage');
+  let width = canvas.clientWidth, height = canvas.clientHeight;
+
+  // WebGL Renderer with High Precision & ACES Filmic Tone Mapping for Realism
+  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true, powerPreference: "high-performance"});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(width, height, false);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.15;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(36, width/height, 0.1, 100);
+  camera.position.set(0, 0, 14.5);
+
+  // ---- Dynamic Studio Environment Map Generation for Realistic Reflections ----
+  function generateStudioEnvMap() {
+    const pmremGenerator = new THREE.PMREMGenerator(renderer);
+    pmremGenerator.compileEquirectangularShader();
+    
+    const envCanvas = document.createElement('canvas');
+    envCanvas.width = 512;
+    envCanvas.height = 256;
+    const ctx = envCanvas.getContext('2d');
+    
+    const grad = ctx.createLinearGradient(0, 0, 0, 256);
+    grad.addColorStop(0, '#ffffff');
+    grad.addColorStop(0.2, '#9aa5b5');
+    grad.addColorStop(0.5, '#2e333d');
+    grad.addColorStop(1, '#080a0f');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 512, 256);
+    
+    // Soft studio lightbanks
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.ellipse(140, 50, 90, 45, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = '#ffdfab';
+    ctx.beginPath();
+    ctx.ellipse(380, 75, 75, 38, 0, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.fillStyle = '#aaccff';
+    ctx.beginPath();
+    ctx.ellipse(260, 200, 100, 30, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    const texture = new THREE.CanvasTexture(envCanvas);
+    texture.mapping = THREE.EquirectangularReflectionMapping;
+    const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+    pmremGenerator.dispose();
+    return envMap;
+  }
+  const studioEnvMap = generateStudioEnvMap();
+  scene.environment = studioEnvMap;
+
+  // ---- Build double helix geometry (Realistic PBR ribbons + detailed nucleotide base pairs) ----
+  const group = new THREE.Group();
+  scene.add(group);
+
+  const turns = 3.6;
+  const heightSpan = 13.5;
+  const radius = 1.48; // Increased size slightly
+  const segsPerTurn = 80;
+  const totalSegs = Math.floor(segsPerTurn * turns);
+
+  function strandPoint(t, offset){
+    const angle = t * turns * Math.PI * 2 + offset;
+    const y = heightSpan / 2 - t * heightSpan;
+    const x = Math.cos(angle) * radius;
+    const z = Math.sin(angle) * radius;
+    return new THREE.Vector3(x, y, z);
+  }
+
+  // Realistic Color Gradients: Brushed Titanium Silver to Warm Champagne Gold
+  function colorAt(y){
+    const tt = (y + heightSpan / 2) / heightSpan; // 0 bottom .. 1 top
+    const titanium = new THREE.Color(0xa0a8b5);
+    const gold = new THREE.Color(0xf3c775);
+    
+    const gaussianGlow = Math.exp(-Math.pow((tt - 0.58) / 0.28, 2));
+    let c = titanium.clone().lerp(gold, Math.min(1, gaussianGlow * 1.2 + 0.08));
+    return c;
+  }
+
+  // Strand Tubes (Physical Metallic Ribbons with Clearcoat)
+  function buildStrandTube(offset){
+    const pts = [];
+    for(let i = 0; i <= totalSegs; i++){
+      pts.push(strandPoint(i / totalSegs, offset));
+    }
+    const curve = new THREE.CatmullRomCurve3(pts);
+    const geo = new THREE.TubeGeometry(curve, totalSegs, 0.056, 12, false);
+
+    const colors = [];
+    const posAttr = geo.attributes.position;
+    for(let i = 0; i < posAttr.count; i++){
+      const y = posAttr.getY(i);
+      const c = colorAt(y);
+      colors.push(c.r, c.g, c.b);
+    }
+    geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+    // MeshPhysicalMaterial gives photorealistic depth, clearcoat gloss & metal reflections
+    const mat = new THREE.MeshPhysicalMaterial({
+      vertexColors: true,
+      metalness: 0.78,
+      roughness: 0.18,
+      clearcoat: 0.85,
+      clearcoatRoughness: 0.1,
+      reflectivity: 0.9,
+      envMapIntensity: 1.6
+    });
+    return new THREE.Mesh(geo, mat);
+  }
+
+  const strandA = buildStrandTube(0);
+  const strandB = buildStrandTube(Math.PI);
+  group.add(strandA, strandB);
+
+  // ---- Realistic Base Pairs & Molecular Node Joints ----
+  const rungGroup = new THREE.Group();
+  const rungCount = Math.floor(turns * 12);
+  
+  // Shared Geometries & Materials for efficiency
+  const nodeGeo = new THREE.SphereGeometry(0.08, 16, 16);
+  const nodeMatA = new THREE.MeshPhysicalMaterial({
+    color: 0x333538,
+    metalness: 0.85,
+    roughness: 0.15,
+    clearcoat: 0.9
+  });
+  const nodeMatB = new THREE.MeshPhysicalMaterial({
+    color: 0xe0ad54,
+    metalness: 0.9,
+    roughness: 0.2,
+    clearcoat: 1.0
+  });
+
+  for(let i = 0; i <= rungCount; i++){
+    const t = i / rungCount;
+    const p1 = strandPoint(t, 0);
+    const p2 = strandPoint(t, Math.PI);
+    const mid = p1.clone().lerp(p2, 0.5);
+    
+    // Add strand joint sphere nodes for real bio-molecular detail
+    const n1 = new THREE.Mesh(nodeGeo, nodeMatA);
+    n1.position.copy(p1);
+    const n2 = new THREE.Mesh(nodeGeo, nodeMatB);
+    n2.position.copy(p2);
+    rungGroup.add(n1, n2);
+
+    // Two-tone connected nucleotide base bar (A-T & C-G pairing appearance)
+    const dist = p1.distanceTo(p2) * 0.48; // Half length each side
+    const dir = p2.clone().sub(p1).normalize();
+    const quat = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+
+    const c = colorAt(mid.y);
+
+    // Segment A (Silver/Charcoal Base)
+    const rungGeoA = new THREE.CylinderGeometry(0.032, 0.032, dist, 8);
+    const matBaseA = new THREE.MeshPhysicalMaterial({
+      color: 0x2b2d31,
+      metalness: 0.7,
+      roughness: 0.25,
+      clearcoat: 0.6
+    });
+    const segA = new THREE.Mesh(rungGeoA, matBaseA);
+    const posA = p1.clone().lerp(mid, 0.5);
+    segA.position.copy(posA);
+    segA.quaternion.copy(quat);
+
+    // Segment B (Gold/Amber Base)
+    const rungGeoB = new THREE.CylinderGeometry(0.032, 0.032, dist, 8);
+    const matBaseB = new THREE.MeshPhysicalMaterial({
+      color: c,
+      metalness: 0.82,
+      roughness: 0.2,
+      clearcoat: 0.8
+    });
+    const segB = new THREE.Mesh(rungGeoB, matBaseB);
+    const posB = p2.clone().lerp(mid, 0.5);
+    segB.position.copy(posB);
+    segB.quaternion.copy(quat);
+
+    // Center hydrogen bond junction sphere
+    const centerNode = new THREE.Mesh(
+      new THREE.SphereGeometry(0.045, 12, 12),
+      new THREE.MeshPhysicalMaterial({
+        color: 0xffffff,
+        emissive: c.clone().multiplyScalar(0.2),
+        metalness: 0.9,
+        roughness: 0.1
+      })
+    );
+    centerNode.position.copy(mid);
+
+    rungGroup.add(segA, segB, centerNode);
+  }
+  group.add(rungGroup);
+
+  // ---- Particle Bokeh & Energy Glow Swarm ----
+  const PCOUNT = 3200;
+  const particleGeo = new THREE.BufferGeometry();
+  const basePos = new Float32Array(PCOUNT * 3);
+  const randomOffset = new Float32Array(PCOUNT * 3);
+  const pColors = new Float32Array(PCOUNT * 3);
+  const seedPhase = new Float32Array(PCOUNT);
+
+  for(let i = 0; i < PCOUNT; i++){
+    const t = Math.random();
+    const strandChoice = Math.random() < 0.5 ? 0 : Math.PI;
+    const jitter = (Math.random() - 0.5) * 0.4;
+    const p = strandPoint(t, strandChoice);
+    
+    const jAngle = Math.random() * Math.PI * 2;
+    const jr = Math.random() * 0.35;
+    p.x += Math.cos(jAngle) * jr;
+    p.z += Math.sin(jAngle) * jr;
+    p.y += jitter * 0.5;
+
+    basePos[i*3]     = p.x;
+    basePos[i*3 + 1] = p.y;
+    basePos[i*3 + 2] = p.z;
+
+    const dAngle = Math.random() * Math.PI * 2;
+    const dRadius = 1.6 + Math.random() * 3.0;
+    randomOffset[i*3]     = Math.cos(dAngle) * dRadius;
+    randomOffset[i*3 + 1] = (Math.random() - 0.5) * 5;
+    randomOffset[i*3 + 2] = Math.sin(dAngle) * dRadius;
+
+    const c = colorAt(p.y);
+    pColors[i*3]     = c.r; 
+    pColors[i*3 + 1] = c.g; 
+    pColors[i*3 + 2] = c.b;
+
+    seedPhase[i] = Math.random();
+  }
+  particleGeo.setAttribute('position', new THREE.BufferAttribute(basePos.slice(), 3));
+  particleGeo.setAttribute('color', new THREE.BufferAttribute(pColors, 3));
+
+  const particleMat = new THREE.PointsMaterial({
+    size: 0.052,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.85,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
+  });
+  const particles = new THREE.Points(particleGeo, particleMat);
+  group.add(particles);
+
+  // ---- Realistic Studio Lighting Setup ----
+  const mainKey = new THREE.DirectionalLight(0xfff8ee, 2.2);
+  mainKey.position.set(6, 8, 8);
+  scene.add(mainKey);
+
+  const fillWarm = new THREE.DirectionalLight(0xffd8aa, 1.1);
+  fillWarm.position.set(-6, 2, 4);
+  scene.add(fillWarm);
+
+  const rimCool = new THREE.DirectionalLight(0xb4d4ff, 1.4);
+  rimCool.position.set(-5, -6, -6);
+  scene.add(rimCool);
+
+  const ambient = new THREE.AmbientLight(0xffffff, 0.75);
+  scene.add(ambient);
+
+  const goldGlow = new THREE.PointLight(0xffc266, 3.0, 16, 2);
+  goldGlow.position.set(2.0, 2.5, 3.5);
+  group.add(goldGlow);
+
+  const blueGlow = new THREE.PointLight(0x90c2ff, 1.8, 16, 2);
+  blueGlow.position.set(-2.5, -4.0, 3.0);
+  group.add(blueGlow);
+
+  group.rotation.z = -0.52;
+  group.rotation.x = 0.32;
+
+  // ---- Interactive Cursor Parallax & Drag Handling ----
+  let mouseX = 0, mouseY = 0;
+  let isDragging = false;
+  let previousMousePosition = { x: 0, y: 0 };
+
+  window.addEventListener('mousemove', (e) => {
+    if(!isDragging){
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight / 2;
+      mouseX = (e.clientX - cx) / cx;
+      mouseY = (e.clientY - cy) / cy;
+    }
+  });
+
+  stage.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    previousMousePosition = { x: e.clientX, y: e.clientY };
+  });
+
+  window.addEventListener('mouseup', () => { isDragging = false; });
+
+  window.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      const deltaMove = {
+        x: e.clientX - previousMousePosition.x,
+        y: e.clientY - previousMousePosition.y
+      };
+      group.rotation.y += deltaMove.x * 0.008;
+      group.rotation.x += deltaMove.y * 0.008;
+      previousMousePosition = { x: e.clientX, y: e.clientY };
+    }
+  });
+
+  // ---- Animation loop ----
+  const clock = new THREE.Clock();
+  const CYCLE_DURATION = 7.0;
+
+  function dissolveFactor(time){
+    const local = (time % CYCLE_DURATION) / CYCLE_DURATION;
+    const tri = local < 0.5 ? local * 2 : (1 - local) * 2;
+    return Math.pow(tri, 1.6);
+  }
+
+  const posAttr = particleGeo.attributes.position;
+
+  function animate(){
+    requestAnimationFrame(animate);
+    const t = clock.getElapsedTime();
+
+    if(!isDragging){
+      group.rotation.y = t * 0.32 + mouseX * 0.45;
+      group.rotation.x = 0.32 + mouseY * 0.25;
+    }
+
+    const df = dissolveFactor(t);
+    strandA.material.opacity = 1 - df * 0.82;
+    strandA.material.transparent = true;
+    strandB.material.opacity = 1 - df * 0.82;
+    strandB.material.transparent = true;
+    
+    rungGroup.children.forEach(child => { 
+      if(child.material){
+        child.material.transparent = true; 
+        child.material.opacity = 1 - df * 0.88;
+      }
+    });
+
+    particleMat.opacity = 0.3 + df * 0.7;
+
+    for(let i = 0; i < PCOUNT; i++){
+      const idx = i * 3;
+      const localDf = Math.min(1, df * 1.35 + seedPhase[i] * 0.15);
+      posAttr.array[idx]     = basePos[idx]     + randomOffset[idx] * localDf;
+      posAttr.array[idx + 1] = basePos[idx + 1] + randomOffset[idx + 1] * localDf + Math.sin(t * 0.7 + seedPhase[i] * 12) * 0.06 * localDf;
+      posAttr.array[idx + 2] = basePos[idx + 2] + randomOffset[idx + 2] * localDf;
+    }
+    posAttr.needsUpdate = true;
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  function onResize(){
+    width = canvas.clientWidth; height = canvas.clientHeight;
+    if(width === 0 || height === 0) return;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height, false);
+  }
+  window.addEventListener('resize', onResize);
+  setTimeout(onResize, 50);
+})();
+</script>
+</body>
+</html>
