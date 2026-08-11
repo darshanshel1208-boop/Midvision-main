@@ -42,19 +42,19 @@ export default function MRIAnalysis() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center">
-          <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-4">
-            <CheckCircle2 className="w-10 h-10 text-green-500" />
+          <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mb-4">
+            <CheckCircle2 className="w-10 h-10 text-red-500" />
           </div>
           <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Risk Level</h3>
-          <h2 className="text-3xl font-bold text-green-600">Normal</h2>
+          <h2 className="text-3xl font-bold text-red-600">CRITICAL</h2>
         </div>
 
         <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm md:col-span-2">
           <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-            <Activity className="w-5 h-5 text-blue-500" /> AI Findings
+            <Activity className="w-5 h-5 text-red-500" /> AI Findings
           </h3>
           <p className="text-slate-600 leading-relaxed mb-4">
-            Analysis of the multi-planar MRI reveals no acute intracranial hemorrhage, mass effect, or midline shift. Ventricular size and sulcal prominence are within normal limits for age. No restricted diffusion to suggest acute ischemia.
+            Analysis of the multi-planar MRI reveals a hyperintense lesion in the right temporal lobe (approx 3x4 cm) with surrounding edema. Mass effect with midline shift is detected. High probability of Glioblastoma or severe neoplastic process. Immediate neurosurgical consultation is required.
           </p>
           <div className="flex flex-col gap-3 mt-4">
             <div className="bg-green-50 border border-green-100 px-4 py-3 rounded-xl flex items-start gap-3">

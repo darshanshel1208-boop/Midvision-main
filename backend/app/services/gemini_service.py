@@ -1,6 +1,7 @@
 import io
 import json
 import logging
+from typing import Optional, Dict, Any
 try:
     from PIL import Image
 except ImportError:
@@ -63,19 +64,39 @@ def analyze_medical_image_with_ai(image_bytes: bytes, image_type: str) -> Dict[s
     client = get_gemini_client()
     
     if not client:
-        return {
-            "ai_engine": "Rule-Based Mock Engine (Set GEMINI_API_KEY in .env for Real AI)",
-            "image_type": image_type,
-            "findings": [
-                f"Sample analysis for {image_type}",
-                "No critical acute abnormality detected in baseline check."
-            ],
-            "risk_score": 15,
-            "risk_level": "LOW",
-            "confidence": 0.85,
-            "recommendation": "Consult physician for definitive clinical correlation.",
-            "note": "Configure GEMINI_API_KEY in backend/.env to activate live Gemini Vision AI analysis."
-        }
+        if "mri" in image_type.lower():
+            return {
+                "ai_engine": "Rule-Based Mock Engine (Set GEMINI_API_KEY in .env for Real AI)",
+                "image_type": image_type,
+                "findings": [
+                    f"Sample analysis for {image_type}",
+                    "Hyperintense lesion observed in the temporal lobe.",
+                    "Mass effect with midline shift detected."
+                ],
+                "suspicious_regions": [
+                    "Right temporal lobe mass (approx 3x4 cm) with surrounding edema."
+                ],
+                "primary_suspicion": "High probability of Glioblastoma or severe neoplastic process.",
+                "risk_score": 88,
+                "risk_level": "CRITICAL",
+                "confidence": 0.92,
+                "recommendation": "Immediate neurosurgical consultation and biopsy recommended.",
+                "note": "Configure GEMINI_API_KEY in backend/.env to activate live Gemini Vision AI analysis."
+            }
+        else:
+            return {
+                "ai_engine": "Rule-Based Mock Engine (Set GEMINI_API_KEY in .env for Real AI)",
+                "image_type": image_type,
+                "findings": [
+                    f"Sample analysis for {image_type}",
+                    "No critical acute abnormality detected in baseline check."
+                ],
+                "risk_score": 15,
+                "risk_level": "LOW",
+                "confidence": 0.85,
+                "recommendation": "Consult physician for definitive clinical correlation.",
+                "note": "Configure GEMINI_API_KEY in backend/.env to activate live Gemini Vision AI analysis."
+            }
         
     try:
         image = Image.open(io.BytesIO(image_bytes))

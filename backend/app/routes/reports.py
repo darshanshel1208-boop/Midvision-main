@@ -25,7 +25,7 @@ async def upload_report(
         result_data = {"risk": "Medium", "findings": ["Mild pleural effusion detected", "No consolidation"], "score": 75}
         specialty = "Pulmonologist"
     elif report_type == "mri":
-        result_data = {"risk": "Low", "findings": ["No acute infarct", "Normal ventricular size"], "score": 98}
+        result_data = {"risk": "Critical", "findings": ["Hyperintense lesion in temporal lobe", "Mass effect with midline shift", "High probability of Glioblastoma"], "score": 12}
         specialty = "Neurologist"
     elif report_type == "ct":
         result_data = {"risk": "High", "findings": ["Pulmonary nodule detected", "Requires immediate review"], "score": 45}
