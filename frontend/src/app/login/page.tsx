@@ -49,7 +49,7 @@ export default function LoginPage() {
       {/* Glassmorphism Login Overlay */}
       <div className="relative z-10 flex min-h-screen items-center justify-center p-4 pointer-events-none">
         
-        <div className="w-full max-w-md bg-white/20 backdrop-blur-2xl border border-white/50 rounded-3xl p-8 shadow-[0_8px_32px_rgba(0,0,0,0.1)] flex flex-col items-center pointer-events-auto">
+        <div className="w-full max-w-md bg-white/20 backdrop-blur-2xl border border-white/50 rounded-3xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.1)] flex flex-col items-center pointer-events-auto">
           
           <div className="mb-6 flex flex-col items-center">
             <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-blue-600/30">

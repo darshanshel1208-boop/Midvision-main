@@ -49,14 +49,14 @@ export default function ReportRiskActionBanner({ riskLevel, specialty = "Special
           </p>
         </div>
 
-        <div className="pt-2 flex items-center justify-between border-t border-white/20 text-xs">
+        <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-white/20 text-xs gap-3 sm:gap-0">
           <div className="flex items-center gap-2 text-amber-100 font-semibold">
-            <Zap className="w-4 h-4 text-amber-300 fill-amber-300" />
+            <Zap className="w-4 h-4 text-amber-300 fill-amber-300 shrink-0" />
             <span>Priority Queue Position #1 • Slot Reserved</span>
           </div>
           <Link
             href="/dashboard/appointments"
-            className="px-4 py-2 bg-white text-red-700 hover:bg-red-50 font-bold rounded-xl shadow-md transition flex items-center gap-1 shrink-0"
+            className="w-full sm:w-auto px-4 py-2 bg-white text-red-700 hover:bg-red-50 font-bold rounded-xl shadow-md transition flex items-center justify-center gap-1 shrink-0"
           >
             View Appointment <ArrowRight className="w-3.5 h-3.5" />
           </Link>
@@ -66,8 +66,8 @@ export default function ReportRiskActionBanner({ riskLevel, specialty = "Special
   }
 
   return (
-    <div className="bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 text-white p-6 rounded-3xl shadow-md border border-amber-400 space-y-3 animate-in fade-in">
-      <div className="flex items-center justify-between">
+    <div className="bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 text-white p-5 sm:p-6 rounded-3xl shadow-md border border-amber-400 space-y-3 animate-in fade-in">
+      <div className="flex items-center justify-between flex-wrap gap-2">
         <div className="flex items-center gap-2 bg-black/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
           <AlertTriangle className="w-4 h-4 text-amber-200" />
           <span>AI Clinical Suggestion</span>
@@ -78,7 +78,7 @@ export default function ReportRiskActionBanner({ riskLevel, specialty = "Special
       </div>
 
       <div className="space-y-1">
-        <h3 className="text-lg font-bold flex items-center gap-2">
+        <h3 className="text-base sm:text-lg font-bold flex items-center gap-2">
           💡 Appointment Booking Suggestion
         </h3>
         <p className="text-xs text-amber-100 leading-relaxed">
@@ -86,11 +86,11 @@ export default function ReportRiskActionBanner({ riskLevel, specialty = "Special
         </p>
       </div>
 
-      <div className="pt-2 flex items-center justify-between border-t border-white/20 text-xs">
+      <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-white/20 text-xs gap-3 sm:gap-0">
         <span className="text-amber-100 font-medium">Recommended Specialty: {specialty}</span>
         <Link
           href={`/dashboard/appointments`}
-          className="px-4 py-2 bg-white text-amber-800 hover:bg-amber-50 font-bold rounded-xl shadow-sm transition flex items-center gap-1 shrink-0"
+          className="w-full sm:w-auto px-4 py-2 bg-white text-amber-800 hover:bg-amber-50 font-bold rounded-xl shadow-sm transition flex items-center justify-center gap-1 shrink-0"
         >
           <Calendar className="w-3.5 h-3.5" /> Book Appointment Now <ArrowRight className="w-3.5 h-3.5" />
         </Link>

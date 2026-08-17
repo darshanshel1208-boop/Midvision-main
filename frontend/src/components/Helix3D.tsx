@@ -23,7 +23,16 @@ export default function Helix3D() {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(36, width/height, 0.1, 100);
-    camera.position.set(0, 0, 14.5);
+    const setResponsiveCameraPos = (w: number) => {
+      if (w < 480) {
+        camera.position.set(0, 0, 9.2);
+      } else if (w < 768) {
+        camera.position.set(0, 0, 11.0);
+      } else {
+        camera.position.set(0, 0, 14.5);
+      }
+    };
+    setResponsiveCameraPos(width);
 
     // ---- Dynamic Studio Environment Map Generation for Realistic Reflections ----
     function generateStudioEnvMap() {
@@ -317,9 +326,34 @@ export default function Helix3D() {
 
     const handleMouseUp = () => { isDragging = false; };
 
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (isDragging && e.touches.length === 1) {
+        const deltaMove = {
+          x: e.touches[0].clientX - previousMousePosition.x,
+          y: e.touches[0].clientY - previousMousePosition.y
+        };
+        group.rotation.y += deltaMove.x * 0.008;
+        group.rotation.x += deltaMove.y * 0.008;
+        previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }
+    };
+
+    const handleTouchEnd = () => { isDragging = false; };
+
     window.addEventListener('mousemove', handleMouseMove);
     stage.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);
+
+    stage.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd);
 
     // ---- Animation loop ----
     const clock = new THREE.Clock();
@@ -376,6 +410,7 @@ export default function Helix3D() {
       width = canvasRef.current?.clientWidth || window.innerWidth; 
       height = canvasRef.current?.clientHeight || window.innerHeight;
       if(width === 0 || height === 0) return;
+      setResponsiveCameraPos(width);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height, false);
@@ -390,6 +425,9 @@ export default function Helix3D() {
       window.removeEventListener('mousemove', handleMouseMove);
       stage.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
+      stage.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
       renderer.dispose();
       scene.clear();
     };

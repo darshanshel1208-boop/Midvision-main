@@ -56,9 +56,9 @@ export default function PatientDashboard() {
             </div>
             <div className="divide-y divide-slate-100">
               
-              <div className="p-6 flex items-center justify-between hover:bg-slate-50 transition-colors">
+              <div className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center shrink-0">
                     <Activity className="w-6 h-6 text-red-500" />
                   </div>
                   <div>
@@ -66,7 +66,7 @@ export default function PatientDashboard() {
                     <p className="text-sm text-slate-500">Analyzed 2 days ago</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center justify-between sm:justify-end gap-4">
                   <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">Normal</span>
                   <Link href="/dashboard/analysis/blood" className="p-2 text-slate-400 hover:text-blue-600 bg-white shadow-sm border border-slate-100 rounded-lg hover:border-blue-200 transition-colors">
                     <ArrowRight className="w-4 h-4" />
@@ -74,9 +74,9 @@ export default function PatientDashboard() {
                 </div>
               </div>
 
-              <div className="p-6 flex items-center justify-between hover:bg-slate-50 transition-colors">
+              <div className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center shrink-0">
                     <Activity className="w-6 h-6 text-purple-500" />
                   </div>
                   <div>
@@ -84,7 +84,7 @@ export default function PatientDashboard() {
                     <p className="text-sm text-slate-500">Analyzed 1 week ago</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center justify-between sm:justify-end gap-4">
                   <span className="px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full">Observation</span>
                   <Link href="/dashboard/analysis/xray" className="p-2 text-slate-400 hover:text-blue-600 bg-white shadow-sm border border-slate-100 rounded-lg hover:border-blue-200 transition-colors">
                     <ArrowRight className="w-4 h-4" />

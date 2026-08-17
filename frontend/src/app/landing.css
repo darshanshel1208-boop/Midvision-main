@@ -143,10 +143,10 @@
 }
 .landing-page #helix-canvas{
   position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 960px;
-  height: 780px;
+  top: 0; left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  transform: none;
 }
 
 .landing-page .hero-copy-right{
@@ -241,11 +241,55 @@
 }
 
 @media (max-width:1080px){
-  .landing-page h1{font-size: 46px;}
-  .landing-page .hero-grid{grid-template-columns: 1fr;}
-  .landing-page .helix-stage{grid-column: 1/2; height: 500px;}
-  .landing-page #helix-canvas{width: 480px; height: 500px;}
-  .landing-page .hero-copy-right{grid-column: 1/2; justify-self: start; margin-top: 500px; max-width: 100%;}
-  .landing-page .hero-left{grid-row: 1/2;}
-  .landing-page .info-card{grid-template-columns: 1fr; text-align: left; padding: 32px;}
+  .landing-page .page{padding: 0 20px;}
+  .landing-page .hero{min-height: auto; padding-top: 10px; padding-bottom: 40px;}
+  .landing-page .hero-grid{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: auto;
+    position: relative;
+  }
+  .landing-page h1{font-size: 40px; margin-bottom: 24px;}
+  .landing-page .helix-stage{
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    opacity: 0.85;
+  }
+  .landing-page #helix-canvas{width: 100% !important; height: 100% !important;}
+  .landing-page .hero-left{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+  .landing-page .hero-copy-right{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0 !important;
+    justify-self: auto;
+  }
+  .landing-page .info-card{grid-template-columns: 1fr; text-align: left; padding: 32px; gap: 20px;}
 }
+
+@media (max-width: 768px){
+  .landing-page .page{padding: 0 16px;}
+  .landing-page header{padding: 16px 0 8px 0; flex-wrap: wrap; gap: 12px;}
+  .landing-page .logo-group{gap: 16px;}
+  .landing-page .icons{gap: 12px;}
+  .landing-page h1{font-size: 32px; letter-spacing: -1px; margin-bottom: 20px;}
+  .landing-page .eyebrow{margin-bottom: 10px;}
+  .landing-page .btn-outline, .landing-page .btn-dark{padding: 14px 24px; width: 100%; justify-content: center;}
+  .landing-page .info-card{padding: 24px; margin-bottom: 40px;}
+  .landing-page .info-num{font-size: 40px;}
+  .landing-page .info-mid h3{font-size: 18px;}
+}
+
+@media (max-width: 480px){
+  .landing-page h1{font-size: 26px; line-height: 1.15;}
+  .landing-page .hero-grid{gap: 20px;}
+}
+

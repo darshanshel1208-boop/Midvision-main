@@ -125,25 +125,25 @@ export default function PresenceControlCenter() {
   const activeDocObj = doctors.find(d => d.doctor_id === selectedDoctor);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {/* Top Banner Header */}
-      <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl p-6 md:p-8 text-white shadow-xl relative overflow-hidden">
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl p-5 sm:p-6 md:p-8 text-white shadow-xl relative overflow-hidden">
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 sm:mb-3">
               <Zap className="w-3.5 h-3.5 text-amber-300 fill-amber-300" /> AI & Digital Sensor Integration
             </div>
-            <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight">
               Optimizing Doctor Availability & Dynamic Slot Allocation
             </h1>
-            <p className="text-blue-100 text-sm mt-2 max-w-2xl">
+            <p className="text-blue-100 text-xs sm:text-sm mt-2 max-w-2xl">
               Automated doctor presence tracking using multi-sensor technology (RFID, Face Detection, Mobile Proximity) & real-time AI dynamic slot allocation for waitlisted patients.
             </p>
           </div>
 
           <button
             onClick={fetchData}
-            className="flex items-center gap-2 bg-white text-blue-700 hover:bg-blue-50 px-5 py-3 rounded-2xl font-bold text-sm shadow-md transition shrink-0"
+            className="flex items-center justify-center gap-2 bg-white text-blue-700 hover:bg-blue-50 px-4 py-2.5 sm:px-5 sm:py-3 rounded-2xl font-bold text-xs sm:text-sm shadow-md transition shrink-0 w-full sm:w-auto"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} /> Refresh Live Feeds
           </button>
